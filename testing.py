@@ -8,7 +8,6 @@ with open('timetable.json', 'r', encoding='utf-8') as file:
     data = json.loads(input_data)
 
 lesson_dict = data['lessons'][0]
-pprint(lesson_dict)
 
 actual_lesson_dict = lesson_dict['actual_lesson']
 teacher_dict = lesson_dict['teacher']
@@ -16,6 +15,7 @@ time_dict = lesson_dict['time']
 start_time_dict = time_dict['start']
 end_time_dict = time_dict['end']
 place_dict = lesson_dict['place']
+pprint(lesson_dict)
 
 timetable = timetable_pb2.TimeTable()
 
@@ -50,3 +50,6 @@ place.room = place_dict['room']
 # print(lesson.place)
 
 print(lesson)
+
+with open('timetable.serialized', 'wb') as file:
+    file.write(timetable.SerializeToString())
