@@ -1,8 +1,52 @@
 import json
 from pprint import pprint
+import profile
+import timetable_pb2
 
-with open('p3111_timetable.json', 'r', encoding='utf-8') as file:
+with open('timetable.json', 'r', encoding='utf-8') as file:
     input_data = file.read()
     data = json.loads(input_data)
 
-pprint(data)
+lesson_dict = data['lessons'][0]
+pprint(lesson_dict)
+
+actual_lesson_dict = lesson_dict['actual_lesson']
+teacher_dict = lesson_dict['teacher']
+time_dict = lesson_dict['time']
+start_time_dict = time_dict['start']
+end_time_dict = time_dict['end']
+place_dict = lesson_dict['place']
+
+timetable = timetable_pb2.TimeTable()
+
+lesson = timetable.lessons.add()
+
+actual_lesson = lesson.actual_lesson
+actual_lesson.name = actual_lesson_dict['name']
+actual_lesson.lesson_type = actual_lesson_dict['lesson_type']
+# print(lesson.actual_lesson)
+
+teacher = lesson.teacher
+teacher.last_name = teacher_dict['last_name']
+teacher.first_name = teacher_dict['first_name']
+teacher.patronymic = teacher_dict['patronymic']
+# print(lesson.teacher)
+
+time = lesson.time
+time.parity = time_dict['parity']
+
+start_time = time.start
+start_time.hour = start_time_dict['hour']
+start_time.minute = start_time_dict['minute']
+
+end_time = time.end
+end_time.hour = end_time_dict['hour']
+end_time.minute = end_time_dict['minute']
+# print(lesson.time)
+
+place = lesson.place
+place.address = place_dict['address']
+place.room = place_dict['room']
+# print(lesson.place)
+
+print(lesson)

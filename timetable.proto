@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+message Lesson {
+    required ActualLesson actual_lesson = 1;
+    required Teacher teacher = 2;
+    required Time time = 3;
+    required Place place = 4;
+
+    message ActualLesson {
+        required string name = 1;
+        required string lesson_type = 2;
+    }
+
+    message Teacher {
+        required string last_name = 1;
+        required string first_name = 2;
+        required string patronymic = 3;
+    }
+
+    message Time {
+        required string parity = 1;
+        required ActualTime start = 2;
+        required ActualTime end = 3;
+
+        message ActualTime {
+            required int32 hour = 1;
+            required int32 minute = 2;
+        }
+    }
+
+    message Place {
+        required string address = 1;
+        required string room = 2;
+    }
+}
+
+message TimeTable {
+    repeated Lesson lessons = 4;
+}
