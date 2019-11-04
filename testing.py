@@ -1,15 +1,16 @@
-from converter import FromJsonToProtoConverter
 from inout import IO
+from converter import FromJsonToProtoConverter
 
 
 def main():
-    timetable_input = IO.get_input_timetable()
+    io = IO()
+    converter = FromJsonToProtoConverter()
 
-    converter = FromJsonToProtoConverter(timetable_input)
-    timetable_output = converter.convert()
+    timetable_input = io.get_input_timetable()
+    timetable_output = converter.convert(timetable_input)
     print(timetable_output)
 
-    IO.write_output_timetable(timetable_output)
+    io.write_output_timetable(timetable_output)
 
 
 if __name__ == '__main__':

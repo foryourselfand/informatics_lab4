@@ -1,13 +1,8 @@
-import json
-from pprint import pprint
-
 import timetable_pb2
 
 
 class FromJsonToProtoConverter:
-    def __init__(self, timetable):
-        self.timetable = timetable
-
+    def __init__(self):
         self.actual_lesson = dict()
         self.teacher = dict()
         self.time = dict()
@@ -17,11 +12,11 @@ class FromJsonToProtoConverter:
 
         self.lesson = None
 
-    def convert(self):
+    def convert(self, input_timetable):
         timetable = timetable_pb2.TimeTable()
 
         for i in range(4):
-            lesson = self.timetable['lessons'][i]
+            lesson = input_timetable[f'lesson_{i + 1}']
             self.fill_data_from_single_lesson(lesson)
 
             self.lesson = timetable.lessons.add()

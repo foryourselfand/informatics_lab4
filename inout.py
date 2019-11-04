@@ -1,13 +1,16 @@
-import json
 from pprint import pprint
+
+from jsonparser import JsonParser
 
 
 class IO:
-    @staticmethod
-    def get_input_timetable():
+    def __init__(self):
+        self.parser = JsonParser()
+
+    def get_input_timetable(self):
         with open('timetable.json', 'r', encoding='utf-8') as file:
             input_data = file.read()
-            timetable = json.loads(input_data)
+            timetable = self.parser.parse(input_data)
         return timetable
 
     @staticmethod
@@ -17,7 +20,8 @@ class IO:
 
 
 def main():
-    data = IO.get_input_timetable()
+    io = IO()
+    data = io.get_input_timetable()
     pprint(data)
 
 

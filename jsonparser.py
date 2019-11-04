@@ -54,7 +54,7 @@ class JsonParser:
 
 
 def main():
-    with open('easy_timetable.json', 'r', encoding='utf-8') as input_file:
+    with open('timetable.json', 'r', encoding='utf-8') as input_file:
         input_data = input_file.read()
 
     parser = JsonParser()
