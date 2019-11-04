@@ -8,7 +8,13 @@ message Lesson {
 
     message ActualLesson {
         required string name = 1;
-        required string lesson_type = 2;
+        required LessonType lesson_type = 2;
+
+        enum LessonType {
+            LECTURE = 0;
+            PRACTICE = 1;
+            LABORATORY_WORK = 2;
+        }
     }
 
     message Teacher {
@@ -18,7 +24,7 @@ message Lesson {
     }
 
     message Time {
-        required string parity = 1;
+        required bool is_even = 1;
         required ActualTime start = 2;
         required ActualTime end = 3;
 

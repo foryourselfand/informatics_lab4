@@ -20,10 +20,36 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto2',
   serialized_options=None,
-  serialized_pb=_b('\n\x0ftimetable.proto\"\xc5\x03\n\x06Lesson\x12+\n\ractual_lesson\x18\x01 \x02(\x0b\x32\x14.Lesson.ActualLesson\x12 \n\x07teacher\x18\x02 \x02(\x0b\x32\x0f.Lesson.Teacher\x12\x1a\n\x04time\x18\x03 \x02(\x0b\x32\x0c.Lesson.Time\x12\x1c\n\x05place\x18\x04 \x02(\x0b\x32\r.Lesson.Place\x1a\x31\n\x0c\x41\x63tualLesson\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x13\n\x0blesson_type\x18\x02 \x02(\t\x1a\x44\n\x07Teacher\x12\x11\n\tlast_name\x18\x01 \x02(\t\x12\x12\n\nfirst_name\x18\x02 \x02(\t\x12\x12\n\npatronymic\x18\x03 \x02(\t\x1a\x90\x01\n\x04Time\x12\x0e\n\x06parity\x18\x01 \x02(\t\x12&\n\x05start\x18\x02 \x02(\x0b\x32\x17.Lesson.Time.ActualTime\x12$\n\x03\x65nd\x18\x03 \x02(\x0b\x32\x17.Lesson.Time.ActualTime\x1a*\n\nActualTime\x12\x0c\n\x04hour\x18\x01 \x02(\x05\x12\x0e\n\x06minute\x18\x02 \x02(\x05\x1a&\n\x05Place\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x02(\t\x12\x0c\n\x04room\x18\x02 \x02(\t\"%\n\tTimeTable\x12\x18\n\x07lessons\x18\x04 \x03(\x0b\x32\x07.Lesson')
+  serialized_pb=_b('\n\x0ftimetable.proto\"\xa6\x04\n\x06Lesson\x12+\n\ractual_lesson\x18\x01 \x02(\x0b\x32\x14.Lesson.ActualLesson\x12 \n\x07teacher\x18\x02 \x02(\x0b\x32\x0f.Lesson.Teacher\x12\x1a\n\x04time\x18\x03 \x02(\x0b\x32\x0c.Lesson.Time\x12\x1c\n\x05place\x18\x04 \x02(\x0b\x32\r.Lesson.Place\x1a\x90\x01\n\x0c\x41\x63tualLesson\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x34\n\x0blesson_type\x18\x02 \x02(\x0e\x32\x1f.Lesson.ActualLesson.LessonType\"<\n\nLessonType\x12\x0b\n\x07LECTURE\x10\x00\x12\x0c\n\x08PRACTICE\x10\x01\x12\x13\n\x0fLABORATORY_WORK\x10\x02\x1a\x44\n\x07Teacher\x12\x11\n\tlast_name\x18\x01 \x02(\t\x12\x12\n\nfirst_name\x18\x02 \x02(\t\x12\x12\n\npatronymic\x18\x03 \x02(\t\x1a\x91\x01\n\x04Time\x12\x0f\n\x07is_even\x18\x01 \x02(\x08\x12&\n\x05start\x18\x02 \x02(\x0b\x32\x17.Lesson.Time.ActualTime\x12$\n\x03\x65nd\x18\x03 \x02(\x0b\x32\x17.Lesson.Time.ActualTime\x1a*\n\nActualTime\x12\x0c\n\x04hour\x18\x01 \x02(\x05\x12\x0e\n\x06minute\x18\x02 \x02(\x05\x1a&\n\x05Place\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x02(\t\x12\x0c\n\x04room\x18\x02 \x02(\t\"%\n\tTimeTable\x12\x18\n\x07lessons\x18\x04 \x03(\x0b\x32\x07.Lesson')
 )
 
 
+
+_LESSON_ACTUALLESSON_LESSONTYPE = _descriptor.EnumDescriptor(
+  name='LessonType',
+  full_name='Lesson.ActualLesson.LessonType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='LECTURE', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PRACTICE', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='LABORATORY_WORK', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=252,
+  serialized_end=312,
+)
+_sym_db.RegisterEnumDescriptor(_LESSON_ACTUALLESSON_LESSONTYPE)
 
 
 _LESSON_ACTUALLESSON = _descriptor.Descriptor(
@@ -42,8 +68,8 @@ _LESSON_ACTUALLESSON = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='lesson_type', full_name='Lesson.ActualLesson.lesson_type', index=1,
-      number=2, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=2, type=14, cpp_type=8, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -52,6 +78,7 @@ _LESSON_ACTUALLESSON = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _LESSON_ACTUALLESSON_LESSONTYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -59,8 +86,8 @@ _LESSON_ACTUALLESSON = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=167,
-  serialized_end=216,
+  serialized_start=168,
+  serialized_end=312,
 )
 
 _LESSON_TEACHER = _descriptor.Descriptor(
@@ -103,8 +130,8 @@ _LESSON_TEACHER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=218,
-  serialized_end=286,
+  serialized_start=314,
+  serialized_end=382,
 )
 
 _LESSON_TIME_ACTUALTIME = _descriptor.Descriptor(
@@ -140,8 +167,8 @@ _LESSON_TIME_ACTUALTIME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=391,
-  serialized_end=433,
+  serialized_start=488,
+  serialized_end=530,
 )
 
 _LESSON_TIME = _descriptor.Descriptor(
@@ -152,9 +179,9 @@ _LESSON_TIME = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='parity', full_name='Lesson.Time.parity', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='is_even', full_name='Lesson.Time.is_even', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -184,8 +211,8 @@ _LESSON_TIME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=289,
-  serialized_end=433,
+  serialized_start=385,
+  serialized_end=530,
 )
 
 _LESSON_PLACE = _descriptor.Descriptor(
@@ -221,8 +248,8 @@ _LESSON_PLACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=435,
-  serialized_end=473,
+  serialized_start=532,
+  serialized_end=570,
 )
 
 _LESSON = _descriptor.Descriptor(
@@ -273,7 +300,7 @@ _LESSON = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=20,
-  serialized_end=473,
+  serialized_end=570,
 )
 
 
@@ -303,11 +330,13 @@ _TIMETABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=512,
+  serialized_start=572,
+  serialized_end=609,
 )
 
+_LESSON_ACTUALLESSON.fields_by_name['lesson_type'].enum_type = _LESSON_ACTUALLESSON_LESSONTYPE
 _LESSON_ACTUALLESSON.containing_type = _LESSON
+_LESSON_ACTUALLESSON_LESSONTYPE.containing_type = _LESSON_ACTUALLESSON
 _LESSON_TEACHER.containing_type = _LESSON
 _LESSON_TIME_ACTUALTIME.containing_type = _LESSON_TIME
 _LESSON_TIME.fields_by_name['start'].message_type = _LESSON_TIME_ACTUALTIME

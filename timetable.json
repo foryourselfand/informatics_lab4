@@ -11,7 +11,7 @@
         "patronymic": "Владимирович"
       },
       "time": {
-        "parity": "четная неделя",
+        "is_even": true,
         "start": {
           "hour": 10,
           "minute": 0
