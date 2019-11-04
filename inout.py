@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 
 
 class IO:
@@ -13,3 +14,12 @@ class IO:
     def write_output_timetable(timetable):
         with open('timetable.serialized', 'wb') as file:
             file.write(timetable.SerializeToString())
+
+
+def main():
+    data = IO.get_input_timetable()
+    pprint(data)
+
+
+if __name__ == '__main__':
+    main()
