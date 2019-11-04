@@ -1,4 +1,5 @@
 from pprint import pprint
+import timetable_pb2
 
 from jsonparser import JsonParser
 
@@ -17,6 +18,13 @@ class IO:
     def write_output_timetable(timetable):
         with open('timetable.serialized', 'wb') as file:
             file.write(timetable.SerializeToString())
+
+    @staticmethod
+    def get_serialized_timetable():
+        timetable = timetable_pb2.TimeTable()
+        with open('timetable.serialized', 'rb') as file:
+            timetable.ParseFromString(file.read())
+        return timetable
 
 
 def main():
