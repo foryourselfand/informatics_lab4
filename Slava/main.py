@@ -2,7 +2,7 @@ from pprint import pprint
 import json
 from datetime import datetime
 
-import slava_proto_pb2
+import schedule_pb2
 
 
 def key_value(string):
@@ -53,7 +53,7 @@ def write(DayOfWeek):
 def read():
     input_proto = open('slava_output_proto.output', 'rb')
 
-    DayOfWeek = slava_proto_pb2.DayOfWeek()
+    DayOfWeek = schedule_pb2.DayOfWeek()
     DayOfWeek.ParseFromString(input_proto.read())
 
     input_proto.close()
@@ -82,7 +82,7 @@ def check_speed(text, n):
 
 
 def main():
-    input_json = open('slava_schedule.json')
+    input_json = open('schedule.json')
     input_text = input_json.read()
     input_json.close()
 
@@ -90,7 +90,7 @@ def main():
 
     day_of_week_name = list(input_schedule.keys())[0]
 
-    DayOfWeek = slava_proto_pb2.DayOfWeek()
+    DayOfWeek = schedule_pb2.DayOfWeek()
     DayOfWeek.name = day_of_week_name
     Schedule = DayOfWeek.schedule
 
