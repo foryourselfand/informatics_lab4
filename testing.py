@@ -17,6 +17,8 @@ def main():
 
     print(timetable_output == timetable_serialized)
 
+    io.speed_test()
+
 
 if __name__ == '__main__':
     main()
