@@ -20,49 +20,49 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto2',
   serialized_options=None,
-  serialized_pb=_b('\n\x0eschedule.proto\"\xe0\x01\n\tDayOfWeek\x12\x0c\n\x04name\x18\x01 \x02(\t\x12%\n\x08schedule\x18\x02 \x02(\x0b\x32\x13.DayOfWeek.Schedule\x1a\x9d\x01\n\x08Schedule\x12+\n\x07lessons\x18\x01 \x03(\x0b\x32\x1a.DayOfWeek.Schedule.Lesson\x1a\x64\n\x06Lesson\x12\x0c\n\x04time\x18\x01 \x02(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x02(\t\x12\x11\n\tclassroom\x18\x03 \x01(\t\x12\x17\n\x0fname_of_subject\x18\x04 \x02(\t\x12\x0f\n\x07teacher\x18\x05 \x01(\t')
+  serialized_pb=_b('\n\x0eschedule.proto\"\x81\x01\n\x08Schedule\x12!\n\x07lessons\x18\x01 \x03(\x0b\x32\x10.Schedule.Lesson\x1aR\n\x06Lesson\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x0f\n\x07teacher\x18\x02 \x01(\t\x12\x0c\n\x04time\x18\x03 \x02(\t\x12\r\n\x05place\x18\x04 \x02(\t\x12\x0c\n\x04room\x18\x05 \x01(\t')
 )
 
 
 
 
-_DAYOFWEEK_SCHEDULE_LESSON = _descriptor.Descriptor(
+_SCHEDULE_LESSON = _descriptor.Descriptor(
   name='Lesson',
-  full_name='DayOfWeek.Schedule.Lesson',
+  full_name='Schedule.Lesson',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='time', full_name='DayOfWeek.Schedule.Lesson.time', index=0,
+      name='name', full_name='Schedule.Lesson.name', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='address', full_name='DayOfWeek.Schedule.Lesson.address', index=1,
-      number=2, type=9, cpp_type=9, label=2,
+      name='teacher', full_name='Schedule.Lesson.teacher', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='classroom', full_name='DayOfWeek.Schedule.Lesson.classroom', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='time', full_name='Schedule.Lesson.time', index=2,
+      number=3, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='name_of_subject', full_name='DayOfWeek.Schedule.Lesson.name_of_subject', index=3,
+      name='place', full_name='Schedule.Lesson.place', index=3,
       number=4, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='teacher', full_name='DayOfWeek.Schedule.Lesson.teacher', index=4,
+      name='room', full_name='Schedule.Lesson.room', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -80,19 +80,19 @@ _DAYOFWEEK_SCHEDULE_LESSON = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=143,
-  serialized_end=243,
+  serialized_start=66,
+  serialized_end=148,
 )
 
-_DAYOFWEEK_SCHEDULE = _descriptor.Descriptor(
+_SCHEDULE = _descriptor.Descriptor(
   name='Schedule',
-  full_name='DayOfWeek.Schedule',
+  full_name='Schedule',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='lessons', full_name='DayOfWeek.Schedule.lessons', index=0,
+      name='lessons', full_name='Schedule.lessons', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -101,44 +101,7 @@ _DAYOFWEEK_SCHEDULE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_DAYOFWEEK_SCHEDULE_LESSON, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=86,
-  serialized_end=243,
-)
-
-_DAYOFWEEK = _descriptor.Descriptor(
-  name='DayOfWeek',
-  full_name='DayOfWeek',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='DayOfWeek.name', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='schedule', full_name='DayOfWeek.schedule', index=1,
-      number=2, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_DAYOFWEEK_SCHEDULE, ],
+  nested_types=[_SCHEDULE_LESSON, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -148,38 +111,28 @@ _DAYOFWEEK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=19,
-  serialized_end=243,
+  serialized_end=148,
 )
 
-_DAYOFWEEK_SCHEDULE_LESSON.containing_type = _DAYOFWEEK_SCHEDULE
-_DAYOFWEEK_SCHEDULE.fields_by_name['lessons'].message_type = _DAYOFWEEK_SCHEDULE_LESSON
-_DAYOFWEEK_SCHEDULE.containing_type = _DAYOFWEEK
-_DAYOFWEEK.fields_by_name['schedule'].message_type = _DAYOFWEEK_SCHEDULE
-DESCRIPTOR.message_types_by_name['DayOfWeek'] = _DAYOFWEEK
+_SCHEDULE_LESSON.containing_type = _SCHEDULE
+_SCHEDULE.fields_by_name['lessons'].message_type = _SCHEDULE_LESSON
+DESCRIPTOR.message_types_by_name['Schedule'] = _SCHEDULE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-DayOfWeek = _reflection.GeneratedProtocolMessageType('DayOfWeek', (_message.Message,), {
+Schedule = _reflection.GeneratedProtocolMessageType('Schedule', (_message.Message,), {
 
-  'Schedule' : _reflection.GeneratedProtocolMessageType('Schedule', (_message.Message,), {
-
-    'Lesson' : _reflection.GeneratedProtocolMessageType('Lesson', (_message.Message,), {
-      'DESCRIPTOR' : _DAYOFWEEK_SCHEDULE_LESSON,
-      '__module__' : 'schedule_pb2'
-      # @@protoc_insertion_point(class_scope:DayOfWeek.Schedule.Lesson)
-      })
-    ,
-    'DESCRIPTOR' : _DAYOFWEEK_SCHEDULE,
+  'Lesson' : _reflection.GeneratedProtocolMessageType('Lesson', (_message.Message,), {
+    'DESCRIPTOR' : _SCHEDULE_LESSON,
     '__module__' : 'schedule_pb2'
-    # @@protoc_insertion_point(class_scope:DayOfWeek.Schedule)
+    # @@protoc_insertion_point(class_scope:Schedule.Lesson)
     })
   ,
-  'DESCRIPTOR' : _DAYOFWEEK,
+  'DESCRIPTOR' : _SCHEDULE,
   '__module__' : 'schedule_pb2'
-  # @@protoc_insertion_point(class_scope:DayOfWeek)
+  # @@protoc_insertion_point(class_scope:Schedule)
   })
-_sym_db.RegisterMessage(DayOfWeek)
-_sym_db.RegisterMessage(DayOfWeek.Schedule)
-_sym_db.RegisterMessage(DayOfWeek.Schedule.Lesson)
+_sym_db.RegisterMessage(Schedule)
+_sym_db.RegisterMessage(Schedule.Lesson)
 
 
 # @@protoc_insertion_point(module_scope)

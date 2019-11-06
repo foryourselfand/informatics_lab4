@@ -1,120 +1,101 @@
-from pprint import pprint
 import json
 from datetime import datetime
 
 import schedule_pb2
 
 
-def key_value(string):
-    arr = string.split(":")
-    key = arr[0].strip()[1:-1]
-    value = arr[1].strip()
+def get_key_and_value(s):
+    a = s.split(":")
+    key = a[0].strip().replace('"', '')
+    value = a[1].strip().replace('"', '')
     if value[-1] == ',':
         value = value[:-1]
-    if value != '{':
-        value = value[1:-1]
     return key, value
 
 
-def parse_my(text):
-    input_schedule = {}
+def get_schedule_by_my(text):
+    schedule = dict()
 
-    data = text.split('\n')
-    day_of_week_name, trash = key_value(data[1])
-    input_schedule[day_of_week_name] = {}
+    a = text.split('\n')
 
-    i = 1
-    lesson = ''
+    index = 1
+    lesson_key = ''
     while True:
-        i = i + 1
-        new_line = data[i].strip()
-        if new_line == '}':
-            break
-        if new_line == '},':
+        line = a[index].strip()
+        index = index + 1
+        if line == '},':
             continue
-        key, value = key_value(new_line)
+        elif line == '}':
+            break
+        key, value = get_key_and_value(line)
         if value == '{':
-            lesson = key
-            input_schedule[day_of_week_name][lesson] = {}
+            lesson_key = key
+            schedule[lesson_key] = dict()
         else:
-            input_schedule[day_of_week_name][lesson][key] = value
-
-    return input_schedule
-
-
-def write(DayOfWeek):
-    output_proto = open('slava_output_proto.output', 'wb')
-
-    output_proto.write(DayOfWeek.SerializeToString())
-
-    output_proto.close()
+            schedule[lesson_key][key] = value
+    return schedule
 
 
-def read():
-    input_proto = open('slava_output_proto.output', 'rb')
-
-    DayOfWeek = schedule_pb2.DayOfWeek()
-    DayOfWeek.ParseFromString(input_proto.read())
-
-    input_proto.close()
-
-    return DayOfWeek
+def write_schedule(schedule):
+    with open('out.out', 'wb') as file:
+        file.write(schedule.SerializeToString())
 
 
-def parse_lib(text):
+def read_schedule():
+    schedule = schedule_pb2.Schedule()
+    with open('out.out', 'rb') as file:
+        schedule.ParseFromString(file.read())
+    return schedule
+
+
+def get_schedule_by_lib(text):
     return json.loads(text)
 
 
-def check_speed(text, n):
-    my_start = datetime.now()
-    for i in range(n):
-        parse_my(text)
-    my_end = datetime.now()
-    my_time = (my_end - my_start).total_seconds()
+def speed_test(input_text, number):
+    start_my = datetime.now()
+    for i in range(number):
+        get_schedule_by_my(input_text)
+    end_my = datetime.now()
+    time_my = end_my - start_my
 
-    lib_start = datetime.now()
-    for i in range(n):
-        parse_lib(text)
-    lib_end = datetime.now()
-    lib_time = (lib_end - lib_start).total_seconds()
-    print("my ", my_time)
-    print("lib", lib_time)
+    start_lib = datetime.now()
+    for i in range(number):
+        get_schedule_by_lib(input_text)
+    end_lib = datetime.now()
+    time_lib = end_lib - start_lib
+
+    print("number: ", number)
+    print("my speed", time_my.total_seconds())
+    print("lib speed", time_lib.total_seconds())
 
 
 def main():
-    input_json = open('schedule.json')
-    input_text = input_json.read()
-    input_json.close()
+    with open('schedule.json') as file:
+        text = file.read()
 
-    input_schedule = parse_my(input_text)
+    schedule_dict = get_schedule_by_my(text)
+    schedule_pb = schedule_pb2.Schedule()
 
-    day_of_week_name = list(input_schedule.keys())[0]
+    for lesson_values in schedule_dict.values():
+        lesson = schedule_pb.lessons.add()
+        for key, value in lesson_values.items():
+            if key == 'name':
+                lesson.name = value
+            elif key == 'teacher':
+                lesson.teacher = value
+            elif key == 'time':
+                lesson.time = value
+            elif key == 'place':
+                lesson.place = value
+            elif key == 'room':
+                lesson.room = value
 
-    DayOfWeek = schedule_pb2.DayOfWeek()
-    DayOfWeek.name = day_of_week_name
-    Schedule = DayOfWeek.schedule
+    write_schedule(schedule_pb)
 
-    for lesson_values in input_schedule[day_of_week_name].values():
-        CurrentLesson = Schedule.lessons.add()
-        for attribute_key, attribute_value in lesson_values.items():
-            if attribute_key == 'time':
-                CurrentLesson.time = attribute_value
-            elif attribute_key == 'address':
-                CurrentLesson.address = attribute_value
-            elif attribute_key == 'classroom':
-                CurrentLesson.classroom = attribute_value
-            elif attribute_key == 'name_of_subject':
-                CurrentLesson.name_of_subject = attribute_value
-            elif attribute_key == 'teacher':
-                CurrentLesson.teacher = attribute_value
-
-    # print(DayOfWeek)
-    # write(DayOfWeek)
-
-    DayOfWeekNew = read()
-    print(DayOfWeekNew)
-
-    check_speed(input_text, 100)
+    new_schedule_pb = read_schedule()
+    print(new_schedule_pb)
+    speed_test(text, 1000)
 
 
 if __name__ == '__main__':

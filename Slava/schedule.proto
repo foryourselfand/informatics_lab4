@@ -1,20 +1,16 @@
 syntax = "proto2";
 
-message DayOfWeek {
-    required string name = 1;
-    required Schedule schedule = 2;
+message Schedule {
+    repeated Lesson lessons = 1;
 
-    message Schedule {
-        repeated Lesson lessons = 1;
-
-        message Lesson {
-            required string time = 1;
-            required string address = 2;
-            optional string classroom = 3;
-            required string name_of_subject = 4;
-            optional string teacher = 5;
-        }
+    message Lesson {
+        required string name = 1;
+        optional string teacher = 2;
+        required string time = 3;
+        required string place = 4;
+        optional string room = 5;
     }
 }
+
 
 
