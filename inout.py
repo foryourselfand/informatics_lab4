@@ -1,5 +1,6 @@
 from pprint import pprint
 import timetable_pb2
+import json
 
 from jsonparser import JsonParser
 
@@ -30,7 +31,9 @@ class IO:
 def main():
     io = IO()
     data = io.get_input_timetable()
-    pprint(data)
+
+    timetable = io.get_serialized_timetable()
+    pprint(timetable)
 
 
 if __name__ == '__main__':

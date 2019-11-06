@@ -7,23 +7,23 @@ class JsonParser:
         self.keys = []
 
     def parse(self, input_text: str):
-        text = input_text.split('\n')
+        lines = input_text.split('\n')
 
-        for line in text:
+        for line in lines:
             if ':' in line:
-                temp_key, temp_value = line.split(':')
-                new_key = temp_key.strip()[1:-1]
+                current_key, current_value = line.split(':')
+                new_key = current_key.strip()[1:-1]
             else:
-                temp_value = line
                 new_key = None
+                current_value = line
 
-            temp_value = temp_value.strip()
-            temp_value = temp_value[:-1] if temp_value[-1] == ',' else temp_value
+            current_value = current_value.strip()
+            current_value = current_value[:-1] if current_value[-1] == ',' else current_value
 
-            if temp_value == '{':
+            if current_value == '{':
                 self.keys.append(new_key)
                 self.dicts.append({})
-            elif temp_value == '}':
+            elif current_value == '}':
                 last_key = self.keys.pop()
                 last_dict = self.dicts.pop()
                 new_dict = self.dicts.pop()
@@ -31,23 +31,23 @@ class JsonParser:
                 self.dicts.append(new_dict)
             else:
                 self.keys.append(new_key)
-                if "\"" in temp_value:
-                    temp_value = str(temp_value[1:-1])
-                elif temp_value in ['true', 'false']:
-                    temp_value = temp_value[0].upper() + temp_value[1:]
-                    temp_value = bool(temp_value)
-                elif temp_value == 'null':
-                    temp_value = None
+                if "\"" in current_value:
+                    current_value = str(current_value[1:-1])
+                elif current_value in ['true', 'false']:
+                    current_value = current_value[0].upper() + current_value[1:]
+                    current_value = bool(current_value)
+                elif current_value == 'null':
+                    current_value = None
                 else:
-                    if '.' in temp_value:
-                        temp_value = float(temp_value)
+                    if '.' in current_value:
+                        current_value = float(current_value)
                     else:
-                        temp_value = int(temp_value)
+                        current_value = int(current_value)
 
                 last_key = self.keys.pop()
 
                 last_dict = self.dicts.pop()
-                last_dict[last_key] = temp_value
+                last_dict[last_key] = current_value
                 self.dicts.append(last_dict)
 
         return self.dicts[0][None]

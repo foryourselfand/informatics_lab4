@@ -10,16 +10,16 @@ class FromJsonToProtoConverter:
         self.end_time = dict()
         self.place = dict()
 
-        self.lesson = None
+        self.lesson_pb = None
 
     def convert(self, input_timetable):
         timetable = timetable_pb2.TimeTable()
 
         for i in range(4):
-            lesson = input_timetable[f'lesson_{i + 1}']
-            self.fill_data_from_single_lesson(lesson)
+            lesson_key = input_timetable[f'lesson_{i + 1}']
+            self.fill_data_from_single_lesson(lesson_key)
 
-            self.lesson = timetable.lessons.add()
+            self.lesson_pb = timetable.lessons.add()
             self.fill_actual_lesson()
             self.fill_teacher()
             self.fill_time()
@@ -35,7 +35,7 @@ class FromJsonToProtoConverter:
         self.place = lesson['place']
 
     def fill_actual_lesson(self):
-        actual_lesson = self.lesson.actual_lesson
+        actual_lesson = self.lesson_pb.actual_lesson
         actual_lesson.name = self.actual_lesson['name']
         actual_lesson_type = self.actual_lesson['lesson_type']
         if actual_lesson_type == 'ЛЕК':
@@ -46,13 +46,13 @@ class FromJsonToProtoConverter:
             actual_lesson.lesson_type = actual_lesson.LessonType.LABORATORY_WORK
 
     def fill_teacher(self):
-        teacher = self.lesson.teacher
+        teacher = self.lesson_pb.teacher
         teacher.last_name = self.teacher['last_name']
         teacher.first_name = self.teacher['first_name']
         teacher.patronymic = self.teacher['patronymic']
 
     def fill_time(self):
-        time = self.lesson.time
+        time = self.lesson_pb.time
         time.is_even = self.time['is_even']
 
         start_time = time.start
@@ -64,6 +64,6 @@ class FromJsonToProtoConverter:
         end_time.minute = self.end_time['minute']
 
     def fill_place(self):
-        place = self.lesson.place
+        place = self.lesson_pb.place
         place.address = self.place['address']
         place.room = self.place['room']
