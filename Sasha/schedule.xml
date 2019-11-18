@@ -1,0 +1,21 @@
+<schedule>
+	<lesson1>
+		<name>МАТЕМАТИКА (БАЗОВЫЙ УРОВЕНЬ) (ЛЕК)</name>
+		<place>ул.Ломоносова, д.9, лит. А</place>
+		<time>10:00-11:30</time>
+		<teacher>Холодова Светлана Евгеньевна</teacher>
+		<room>2219 АУД.</room>
+	</lesson1>
+	<lesson2>
+		<name>ИНОСТРАННЫЙ ЯЗЫК (ПРАК)</name>
+		<place>ул.Ломоносова, д.9, лит. Е</place>
+		<time>11:40-13:10</time>
+	</lesson2>
+	<lesson3>
+		<name>МАТЕМАТИКА (БАЗОВЫЙ УРОВЕНЬ) (ПРАК)</name>
+		<place>ул.Ломоносова, д.9, лит. М</place>
+		<time>15:20-16:50</time>
+		<teacher>Мелихова Алина Семеновна</teacher>
+		<room>1121 АУД.</room>
+	</lesson3>
+</schedule>
