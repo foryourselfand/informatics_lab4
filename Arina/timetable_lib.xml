@@ -1,0 +1,66 @@
+<timetable>
+	<lesson_1.1>
+		<name>ИНФОРМАТИКА (ЛАБ)</name>
+		<parity>четная неделя</parity>
+		<teacher>Балакшин Павел Валерьевич</teacher>
+		<room>371 АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>08:20-09:50</time>
+	</lesson_1.1>
+	<lesson_1.2>
+		<name>ДИСКРЕТНАЯ МАТЕМАТИКА (ПРАК)</name>
+		<parity>нечетная неделя</parity>
+		<teacher>Поляков Владимир Иванович</teacher>
+		<room>369А АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>08:20-09:50</time>
+	</lesson_1.2>
+	<lesson_2.1>
+		<name>ИНФОРМАТИКА (ЛАБ)</name>
+		<parity>четная неделя</parity>
+		<teacher>Балакшин Павел Валерьевич</teacher>
+		<room>371 АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>10:00-11:30</time>
+	</lesson_2.1>
+	<lesson_2.2>
+		<name>ДИСКРЕТНАЯ МАТЕМАТИКА (ПРАК)</name>
+		<parity>нечетная неделя</parity>
+		<teacher>Поляков Владимир Иванович</teacher>
+		<room>369А АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>10:00-11:30</time>
+	</lesson_2.2>
+	<lesson_3.1>
+		<name>ПРОГРАММИРОВАНИЕ (ЛЕК)</name>
+		<parity>нечетная неделя</parity>
+		<teacher>Письмак Алексей Евгеньевич</teacher>
+		<room>285 АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>11:40-13:10</time>
+	</lesson_3.1>
+	<lesson_3.2>
+		<name>ОСНОВЫ ПРОФЕССИОНАЛЬНОЙ ДЕЯТЕЛЬНОСТИ (ЛЕК)</name>
+		<parity>четная неделя</parity>
+		<teacher>Клименков Сергей Викторович</teacher>
+		<room>285 АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>11:40-13:10</time>
+	</lesson_3.2>
+	<lesson_4.1>
+		<name>ИНФОРМАТИКА (ЛЕК)</name>
+		<parity>четная неделя</parity>
+		<teacher>Балакшин Павел Валерьевич</teacher>
+		<room>285 АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>13:30-15:00</time>
+	</lesson_4.1>
+	<lesson_4.2>
+		<name>ДИСКРЕТНАЯ МАТЕМАТИКА (ЛЕК)</name>
+		<parity>нечетная неделя</parity>
+		<teacher>Поляков Владимир Иванович</teacher>
+		<room>285 АУД.</room>
+		<place>Кронверкский пр., д.49, лит.А</place>
+		<time>13:30-15:00</time>
+	</lesson_4.2>
+</timetable>
